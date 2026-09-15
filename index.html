@@ -174,6 +174,26 @@
     font-family: 'Fraunces', serif;
   }
 
+  .field-note {
+    background: var(--card-white);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 11px 15px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .field-note .field-note-label {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 4px;
+  }
+
   .event-card {
     background: var(--card-white);
     border-radius: 10px;
@@ -438,6 +458,20 @@ const FIELDS = [
         { nome: "Abacus", dose: "358 ml/ha", total: "17,9 L" },
         { nome: "Aureo", dose: "298 ml/ha", total: "23,2 L" },
       ]},
+      { data: "24/08/2026", tipo: "Fungicida", notaEvento: "Aplicação dividida: Fox Xpro + Aureo em 66,0 ha e Ativum + Iharol nos ~11,7 ha restantes; Preventis no talhão inteiro", produtos: [
+        { nome: "Fox Xpro", dose: "500 ml/ha", total: "33,0 L", nota: "Aplicado em 66,0 ha" },
+        { nome: "Ativum", dose: "771 ml/ha", total: "8,5 L", nota: "Substitui o Fox Xpro no restante da área (~11,0 ha) — preço a confirmar" },
+        { nome: "Preventis", dose: "1.839 ml/ha", total: "142,9 L" },
+        { nome: "Aureo", dose: "400 ml/ha", total: "26,4 L", nota: "Adjuvante do bloco do Fox Xpro — 66,0 ha" },
+        { nome: "Iharol", dose: "385 ml/ha", total: "4,2 L", nota: "Adjuvante do bloco do Ativum — ~11,0 ha" },
+      ]},
+      { data: "03/09/2026", tipo: "Fungicida", notaEvento: "Adjuvante dividido: Assist em ~8,8 ha e Mees no restante do talhão", produtos: [
+        { nome: "Preventis", dose: "1.505 ml/ha", total: "117,0 L" },
+        { nome: "Miravis Pró", dose: "700 ml/ha", total: "54,4 L" },
+        { nome: "Pilarvant", dose: "75 ml/ha", total: "5,8 L" },
+        { nome: "Assist", dose: "400 ml/ha", total: "3,5 L", nota: "Substitui o Mees em parte da área (~8,8 ha)" },
+        { nome: "Mees", dose: "199 ml/ha", total: "13,8 L", nota: "Substitui o Assist em parte da área (~69,3 ha)" },
+      ]},
     ],
   },
   {
@@ -475,10 +509,23 @@ const FIELDS = [
         { nome: "Moddus", dose: "430 ml/ha", total: "45,8 L" },
         { nome: "Aureo", dose: "201 ml/ha", total: "21,4 L" },
       ]},
-      { data: "18/08/2026", tipo: "Fungicida", produtos: [
+      { data: "12/08/2026", tipo: "Fungicida", produtos: [
         { nome: "Trizeb", dose: "801 ml/ha", total: "85,2 L" },
         { nome: "Fox Xpro", dose: "496 ml/ha", total: "52,8 L" },
         { nome: "Aureo", dose: "300 ml/ha", total: "31,9 L" },
+      ]},
+      { data: "25/08/2026", tipo: "Fungicida", produtos: [
+        { nome: "Preventis", dose: "1.839 ml/ha", total: "195,5 L" },
+        { nome: "Ativum", dose: "773 ml/ha", total: "82,2 L", nota: "Preço a confirmar" },
+        { nome: "Iharol", dose: "387 ml/ha", total: "41,2 L" },
+      ]},
+      { data: "03/09/2026", tipo: "Fungicida", notaEvento: "Dose única de 1.520 ml/ha dividida entre três produtos de mesmo princípio: Preventis ~14,2 ha, Echo ~21,4 ha e Clorotalonil ~70,7 ha", produtos: [
+        { nome: "Preventis", dose: "1.520 ml/ha", total: "21,6 L", nota: "Aplicado em ~14,2 ha" },
+        { nome: "Echo", dose: "1.520 ml/ha", total: "32,5 L", nota: "Aplicado em ~21,4 ha" },
+        { nome: "Clorotalonil", dose: "1.520 ml/ha", total: "107,5 L", nota: "Aplicado em ~70,7 ha — mesmo princípio ativo do Echo; preço a confirmar" },
+        { nome: "Miravis Pró", dose: "700 ml/ha", total: "74,4 L" },
+        { nome: "Pilarvant", dose: "75 ml/ha", total: "8,0 L" },
+        { nome: "Mees", dose: "198 ml/ha", total: "21,1 L" },
       ]},
     ],
   },
@@ -519,10 +566,24 @@ const FIELDS = [
         { nome: "Aureo", dose: "285 ml/ha", total: "16,3 L" },
         { nome: "Echo", dose: "1.429 ml/ha", total: "2,5 L", nota: "Substitui o Pilarich em parte da área, mesma dose/ha — clorotalonil de fornecedor diferente (Sipcam Nichino)" },
       ]},
+      { data: "31/07/2026", tipo: "Adubação orgânica", notaEvento: "Aplicação de potássio", produtos: [
+        { nome: "KCL Aspire", dose: "93 kg/ha", total: "5.300 kg", nota: "Adubo potássico boratado (Mosaic)" },
+      ]},
+      { data: "13/08/2026", tipo: "Fungicida", produtos: [
+        { nome: "Trizeb", dose: "1.992 ml/ha", total: "113,6 L" },
+        { nome: "Miravis Pró", dose: "696 ml/ha", total: "39,7 L" },
+        { nome: "Kraton", dose: "75 ml/ha", total: "4,3 L" },
+        { nome: "Iharol", dose: "400 ml/ha", total: "22,8 L" },
+      ]},
+      { data: "07/09/2026", tipo: "Fungicida", produtos: [
+        { nome: "Armero", dose: "1.929 ml/ha", total: "110,0 L", nota: "Protioconazol + mancozebe (Adama) — cevada consta na bula" },
+        { nome: "Mees", dose: "192 ml/ha", total: "11,0 L" },
+        { nome: "Pilarvant", dose: "72 ml/ha", total: "4,1 L" },
+      ]},
     ],
   },
     {
-    id: "campo4", nome: "Campo 4", area: 153.7, cultura: "Milho (mix)", cultivares: "RX520 e RX340",
+    id: "campo4", nome: "Campo 4", area: 153.7, cultura: "Mix de cobertura", cultivares: "RX520 e RX340",
     eventos: [
       { data: "02–06/05/2026", tipo: "Plantio", produtos: [
         { nome: "Semente RX520", dose: "52,1 kg/ha", total: "7.310 kg", nota: "Cultivar plantada em parte do talhão" },
@@ -537,14 +598,9 @@ const FIELDS = [
       { data: "15/07/2026", tipo: "Adubação orgânica", produtos: [
         { nome: "Adubo orgânico", dose: "2.059 kg/ha", total: "324.000 kg" },
       ]},
-      { data: "31/07/2026", tipo: "Adubação orgânica", produtos: [
-        { nome: "KCL Aspire", dose: "93 kg/ha", total: "5.300 kg", nota: "Adubo potássico boratado (Mosaic)" },
-      ]},
-      { data: "13/08/2026", tipo: "Fungicida", produtos: [
-        { nome: "Trizeb", dose: "1.992 ml/ha", total: "113,6 L" },
-        { nome: "Miravis Pró", dose: "676 ml/ha", total: "38,7 L" },
-        { nome: "Kraton", dose: "75 ml/ha", total: "4,3 L" },
-        { nome: "Iharol", dose: "75 ml/ha", total: "4,3 L" },
+      { data: "18/08/2026", tipo: "Dessecação", produtos: [
+        { nome: "ZAP QI", dose: "1.983 ml/ha", total: "304,8 L" },
+        { nome: "Exemplo", dose: "1.191 ml/ha", total: "183,1 L", nota: "2,4-D" },
       ]},
     ],
   },
@@ -598,6 +654,12 @@ const FIELDS = [
         { nome: "Pilarvant", dose: "74 ml/ha", total: "10,9 L", nota: "Similar do Kraton — substituição de estoque (FarmPlus: PILARVANT/KRATON)" },
         { nome: "Iharol", dose: "397 ml/ha", total: "58,4 L" },
       ]},
+      { data: "26/08/2026", tipo: "Fungicida", produtos: [
+        { nome: "Preventis", dose: "1.841 ml/ha", total: "270,6 L" },
+        { nome: "Ativum", dose: "771 ml/ha", total: "113,3 L", nota: "Preço a confirmar" },
+        { nome: "Pilarvant", dose: "105 ml/ha", total: "15,5 L" },
+        { nome: "Iharol", dose: "385 ml/ha", total: "56,6 L" },
+      ]},
     ],
   },
   {
@@ -630,17 +692,25 @@ const FIELDS = [
         { nome: "Moddus", dose: "453 ml/ha", total: "53 L" },
         { nome: "Mees", dose: "236 ml/ha", total: "27,6 L" },
       ]},
+      { data: "14/07/2026", tipo: "Adubação orgânica", produtos: [
+        { nome: "KCL Aspire", dose: "94 kg/ha", total: "11.000 kg" },
+      ]},
       { data: "01/08/2026", tipo: "Fungicida", produtos: [
         { nome: "Pilarich", dose: "1.410 ml/ha", total: "165 L" },
         { nome: "Fox Xpro", dose: "483 ml/ha", total: "56,5 L" },
         { nome: "Aureo", dose: "285 ml/ha", total: "33,3 L" },
       ]},
       { data: "11/08/2026", tipo: "Fungicida", produtos: [
-        { nome: "Preventis", dose: "1.996 ml/ha", total: "212,4 L" },
-        { nome: "Trizeb", dose: "1.996 ml/ha", total: "15,1 L" },
+        { nome: "Preventis", dose: "1.996 ml/ha", total: "218,4 L", nota: "Substitui o Trizeb em parte da área, mesma dose/ha" },
+        { nome: "Trizeb", dose: "1.996 ml/ha", total: "15,2 L", nota: "Substitui o Preventis em parte da área, mesma dose/ha" },
         { nome: "Miravis Pró", dose: "695 ml/ha", total: "81,3 L" },
         { nome: "Kraton", dose: "74 ml/ha", total: "8,7 L" },
         { nome: "Iharol", dose: "390 ml/ha", total: "46,4 L" },
+      ]},
+      { data: "07/09/2026", tipo: "Fungicida", produtos: [
+        { nome: "Armero", dose: "1.923 ml/ha", total: "225,0 L", nota: "Preço a confirmar" },
+        { nome: "Mees", dose: "192 ml/ha", total: "22,5 L" },
+        { nome: "Pilarvant", dose: "68 ml/ha", total: "8,0 L" },
       ]},
     ],
   },
@@ -687,10 +757,16 @@ const FIELDS = [
         { nome: "Kraton", dose: "75 ml/ha", total: "8,4 L" },
         { nome: "Iharol", dose: "391 ml/ha", total: "44,4 L" },
       ]},
+      { data: "08/09/2026", tipo: "Fungicida", produtos: [
+        { nome: "Armero", dose: "1.923 ml/ha", total: "215,0 L", nota: "Preço a confirmar" },
+        { nome: "Mees", dose: "192 ml/ha", total: "21,5 L" },
+        { nome: "Pilarvant", dose: "68 ml/ha", total: "7,7 L" },
+      ]},
     ],
   },
   {
     id: "campo8", nome: "Campo 8", area: 162.2, cultura: "Cevada + Aveia", cultivares: "Sting (cevada) e IAPAR 139 (aveia)",
+    observacao: "O talhão está dividido em duas culturas: Cevada Sting em 71,0 ha e Aveia IAPAR 139 em 91,2 ha. Todas as aplicações de herbicida, fungicida e potássio registradas até aqui incidiram apenas sobre a parte de cevada — as doses por hectare conferidas contra os totais fecham em 71,0 ha, não nos 162,2 ha do talhão. A parte de aveia recebeu somente semente e adubo 11-52-00 no plantio de 06/07, sem manejo posterior.",
     eventos: [
       { data: "26/06/2026", tipo: "Plantio", notaEvento: "Plantio de Cevada Sting em 71,0 ha", produtos: [
         { nome: "Semente Sting", dose: "135 kg/ha", total: "9.620 kg" },
@@ -712,6 +788,20 @@ const FIELDS = [
         { nome: "Moddus", dose: "377 ml/ha", total: "26,8 L" },
         { nome: "Mees", dose: "192 ml/ha", total: "13,6 L" },
         { nome: "Axial", dose: "666 ml/ha", total: "47,3 L" },
+      ]},
+      { data: "04/08/2026", tipo: "Adubação orgânica", notaEvento: "Aplicação apenas na parte de Cevada (71,0 ha)", produtos: [
+        { nome: "Fertilizante KCL", dose: "95 kg/ha", total: "6.800 kg", nota: "Cloreto de potássio 00-00-60" },
+      ]},
+      { data: "13/08/2026", tipo: "Fungicida", notaEvento: "Aplicação apenas na parte de Cevada (71,0 ha)", produtos: [
+        { nome: "Echo", dose: "1.454 ml/ha", total: "103,3 L" },
+        { nome: "Fox Xpro", dose: "497 ml/ha", total: "34,0 L" },
+        { nome: "Aureo", dose: "297 ml/ha", total: "21,1 L" },
+      ]},
+      { data: "02/09/2026", tipo: "Fungicida", notaEvento: "Aplicação apenas na parte de Cevada (71,0 ha)", produtos: [
+        { nome: "Preventis", dose: "2.000 ml/ha", total: "142,0 L" },
+        { nome: "Miravis Pró", dose: "700 ml/ha", total: "49,7 L" },
+        { nome: "Pilarvant", dose: "74 ml/ha", total: "5,3 L" },
+        { nome: "Iharol", dose: "400 ml/ha", total: "28,4 L" },
       ]},
     ],
   },
@@ -743,10 +833,17 @@ const FIELDS = [
         { nome: "Fox Xpro", dose: "497 ml/ha", total: "30,0 L" },
         { nome: "Aureo", dose: "298 ml/ha", total: "18,0 L" },
       ]},
+      { data: "02/09/2026", tipo: "Fungicida", produtos: [
+        { nome: "Preventis", dose: "2.000 ml/ha", total: "120,6 L" },
+        { nome: "Miravis Pró", dose: "700 ml/ha", total: "42,2 L" },
+        { nome: "Pilarvant", dose: "74 ml/ha", total: "4,5 L" },
+        { nome: "Iharol", dose: "398 ml/ha", total: "24,0 L" },
+      ]},
     ],
   },
   {
-    id: "campo10", nome: "Campo 10", area: 165.8, cultura: "Milho (mix)", cultivares: "RX520",
+    id: "campo10", nome: "Campo 10", area: 165.8, cultura: "Mix de cobertura → Milho", cultivares: "RX520 (cobertura); Ag 9021 e AS 1801 (milho)",
+    observacao: "O plantio de 17/04 (RX520) foi mix de cobertura para proteção do solo, não cultura comercial. O milho da safra é o plantio de 02–09/09, com as sementes Ag 9021 e AS 1801, feito em plantio direto sobre a palhada do mix dessecado em 27/07. No plantio do milho a semente foi anotada em pacotes e o adubo 10-46-00 sem dose por hectare, então esses itens ainda não entram no cálculo de custo. A aplicação de potássio de 28/08 está a lápis no caderno, sem dose — lançamento incompleto, aguardando baixa.",
     eventos: [
       { data: "16/04/2026", tipo: "Dessecação", notaEvento: "Dessecação de bordaduras apenas (~25 ha)", produtos: [
         { nome: "ZAP QI", dose: "2.000 ml/ha", total: "50 L" },
@@ -763,6 +860,19 @@ const FIELDS = [
       { data: "27/07/2026", tipo: "Dessecação", produtos: [
         { nome: "ZAP QI", dose: "2.026 ml/ha", total: "336 L" },
         { nome: "Exemplo", dose: "1.215 ml/ha", total: "201,6 L" },
+      ]},
+      { data: "20/08/2026", tipo: "Dessecação", notaEvento: "Dessecação de azevém resistente — aplicação parcial em 13,0 ha", produtos: [
+        { nome: "Freno (cletodim)", dose: "500 ml/ha", total: "6,5 L" },
+        { nome: "Mees", dose: "407 ml/ha", total: "5,3 L" },
+      ]},
+      { data: "28/08/2026", tipo: "Adubação orgânica", notaEvento: "Aplicação de potássio — lançamento INCOMPLETO: anotado a lápis, sem dose por hectare", produtos: [
+        { nome: "Fertilizante KCL", dose: "—", total: "28.000 kg", nota: "Dose por hectare não anotada — aguardando baixa do Celso" },
+      ]},
+      { data: "02–09/09/2026", tipo: "Plantio", notaEvento: "Segunda cultura — semente anotada em pacotes, sem dose por hectare", produtos: [
+        { nome: "Semente Ag 9021", dose: "—", total: "228 pct", nota: "Quantidade anotada em pacotes" },
+        { nome: "Semente AS 1801", dose: "—", total: "20 pct", nota: "Quantidade anotada em pacotes" },
+        { nome: "Adubo 10-46-00", dose: "—", total: "33.000 kg", nota: "Dose por hectare não anotada" },
+        { nome: "Grafite", dose: "—", total: "—", nota: "Quantidade não anotada" },
       ]},
     ],
   },
@@ -806,10 +916,17 @@ const FIELDS = [
         { nome: "Fox Xpro", dose: "496 ml/ha", total: "33,0 L" },
         { nome: "Aureo", dose: "298 ml/ha", total: "19,8 L" },
       ]},
+      { data: "02/09/2026", tipo: "Fungicida", produtos: [
+        { nome: "Preventis", dose: "2.000 ml/ha", total: "132,8 L" },
+        { nome: "Miravis Pró", dose: "703 ml/ha", total: "46,7 L" },
+        { nome: "Pilarvant", dose: "76 ml/ha", total: "5,1 L" },
+        { nome: "Iharol", dose: "400 ml/ha", total: "10,7 L", nota: "Substitui o Assist em parte da área, mesma dose/ha" },
+        { nome: "Assist", dose: "400 ml/ha", total: "16,5 L", nota: "Substitui o Iharol em parte da área, mesma dose/ha" },
+      ]},
     ],
   },
   {
-    id: "campo12", nome: "Campo 12", area: 40.0, cultura: "Milho (mix)", cultivares: "RX520",
+    id: "campo12", nome: "Campo 12", area: 40.0, cultura: "Mix de cobertura", cultivares: "RX520",
     eventos: [
       { data: "11/04/2026", tipo: "Dessecação", produtos: [
         { nome: "Exemplo", dose: "1.237 ml/ha", total: "49,5 L" },
@@ -824,14 +941,14 @@ const FIELDS = [
       { data: "03/07/2026", tipo: "Adubação orgânica", notaEvento: "Taxa variável", produtos: [
         { nome: "Calcário Dolomítico", dose: "—", total: "131.000 kg", nota: "Aplicado a taxa variável" },
       ]},
-      { data: "17/08/2026", tipo: "Dessecação", notaEvento: "⚠ INCOMPLETO — dose e total ainda não anotados no caderno", produtos: [
-        { nome: "ZAP QI", dose: "—", total: "—", nota: "Aguardando lançamento de dose e total" },
-        { nome: "Exemplo", dose: "—", total: "—", nota: "Aguardando lançamento de dose e total" },
+      { data: "17/08/2026", tipo: "Dessecação", produtos: [
+        { nome: "ZAP QI", dose: "1.982 ml/ha", total: "79,3 L" },
+        { nome: "Exemplo", dose: "1.190 ml/ha", total: "47,6 L" },
       ]},
     ],
   },
   {
-    id: "campo13", nome: "Campo 13", area: 24.8, cultura: "Milho (mix)", cultivares: "RX520",
+    id: "campo13", nome: "Campo 13", area: 24.8, cultura: "Mix de cobertura", cultivares: "RX520",
     eventos: [
       { data: "13/04/2026", tipo: "Dessecação", produtos: [
         { nome: "Exemplo", dose: "1.217 ml/ha", total: "30,2 L" },
@@ -846,10 +963,14 @@ const FIELDS = [
       { data: "22/06/2026", tipo: "Adubação orgânica", notaEvento: "Taxa variável", produtos: [
         { nome: "Calcário Dolomítico", dose: "—", total: "91.000 kg", nota: "Aplicado a taxa variável" },
       ]},
+      { data: "17/08/2026", tipo: "Dessecação", produtos: [
+        { nome: "ZAP QI", dose: "1.975 ml/ha", total: "49,0 L" },
+        { nome: "Exemplo", dose: "1.189 ml/ha", total: "29,5 L" },
+      ]},
     ],
   },
   {
-    id: "campo14", nome: "Campo 14", area: 61.7, cultura: "Milho (mix)", cultivares: "RX520",
+    id: "campo14", nome: "Campo 14", area: 61.7, cultura: "Mix de cobertura", cultivares: "RX520",
     eventos: [
       { data: "11/04/2026", tipo: "Dessecação", produtos: [
         { nome: "Exemplo", dose: "1.217 ml/ha", total: "75,1 L" },
@@ -864,14 +985,18 @@ const FIELDS = [
       { data: "30/06/2026", tipo: "Adubação orgânica", produtos: [
         { nome: "Gesso agrícola", dose: "1.060 kg/ha", total: "65.400 kg" },
       ]},
-      { data: "11/08/2026", tipo: "Dessecação", notaEvento: "⚠ PENDENTE — o gerente Celso Rinaldi ainda vai completar dose e total no caderno", produtos: [
-        { nome: "ZAP QI", dose: "—", total: "—", nota: "Aguardando lançamento completo" },
-        { nome: "Exemplo", dose: "—", total: "—", nota: "Aguardando lançamento completo" },
+      { data: "11/08/2026", tipo: "Dessecação", produtos: [
+        { nome: "ZAP QI", dose: "1.982 ml/ha", total: "122,3 L" },
+        { nome: "Exemplo", dose: "1.189 ml/ha", total: "73,4 L" },
+      ]},
+      { data: "20/08/2026", tipo: "Dessecação", notaEvento: "Dessecação de gramíneas resistentes", produtos: [
+        { nome: "Freno (cletodim)", dose: "502 ml/ha", total: "31,0 L" },
+        { nome: "Mees", dose: "400 ml/ha", total: "24,7 L" },
       ]},
     ],
   },
   {
-    id: "campo15", nome: "Campo 15", area: 45.2, cultura: "Milho (mix)", cultivares: "RX520",
+    id: "campo15", nome: "Campo 15", area: 45.2, cultura: "Mix de cobertura", cultivares: "RX520",
     eventos: [
       { data: "11/04/2026", tipo: "Dessecação", produtos: [
         { nome: "Exemplo", dose: "1.221 ml/ha", total: "55,2 L" },
@@ -886,10 +1011,14 @@ const FIELDS = [
       { data: "04/07/2026", tipo: "Adubação orgânica", notaEvento: "Taxa variável", produtos: [
         { nome: "Calcário Dolomítico", dose: "—", total: "176.000 kg", nota: "Aplicado a taxa variável" },
       ]},
+      { data: "17/08/2026", tipo: "Dessecação", produtos: [
+        { nome: "ZAP QI", dose: "1.982 ml/ha", total: "89,6 L" },
+        { nome: "Exemplo", dose: "1.190 ml/ha", total: "53,8 L" },
+      ]},
     ],
   },
   {
-    id: "campo16", nome: "Campo 16", area: 35.0, cultura: "Milho (mix)", cultivares: "RX340",
+    id: "campo16", nome: "Campo 16", area: 35.0, cultura: "Mix de cobertura", cultivares: "RX340",
     eventos: [
       { data: "25/06/2026", tipo: "Adubação orgânica", notaEvento: "Aplicação de corretivo — taxa fixa", produtos: [
         { nome: "Calcário", dose: "2.914 kg/ha", total: "102.000 kg" },
@@ -909,7 +1038,8 @@ const FIELDS = [
     ],
   },
   {
-    id: "campo17", nome: "Campo 17", area: 88.0, cultura: "Milho (mix) + Aveia preta", cultivares: "RX340",
+    id: "campo17", nome: "Campo 17", area: 88.0, cultura: "Mix de cobertura + Aveia preta", cultivares: "RX340",
+    observacao: "A área de 88,0 ha foi deduzida, não copiada: o cabeçalho deste talhão no caderno não traz a área. Dois eventos independentes confirmam o valor — a dessecação de 03/07 (2.032 ml/ha para 178,9 L dá 88,0 ha) e o calcário de 17/07 (2.909 kg/ha para 256.000 kg dá 88,0 ha). O adubo do plantio também fecha: 20.000 kg a 227 kg/ha dá 88,1 ha. Já as sementes somam 90,2 ha (RX340 em 79,2 ha e aveia preta em 11,0 ha), 2,2 ha acima — provável sobreposição nas divisas. Confirmar a área com o Celso.",
     eventos: [
       { data: "15/05/2026", tipo: "Dessecação", notaEvento: "Dessecação de mamonas na bordadura — aplicação localizada, sem dose por hectare", produtos: [
         { nome: "ZAP QI", dose: "—", total: "10,0 L", nota: "Aplicação pontual em bordadura" },
@@ -921,7 +1051,7 @@ const FIELDS = [
       { data: "17/07/2026", tipo: "Adubação orgânica", notaEvento: "Aplicação de calcário — taxa fixa", produtos: [
         { nome: "Calcário Dolomítico", dose: "2.909 kg/ha", total: "256.000 kg" },
       ]},
-      { data: "20/07/2026", tipo: "Plantio", notaEvento: "Plantio de milho RX340 com aveia preta; adubo com dose única de 227 kg/ha dividida entre duas formulações", produtos: [
+      { data: "20/07/2026", tipo: "Plantio", notaEvento: "Plantio do mix de cobertura RX340 com aveia preta; adubo com dose única de 227 kg/ha dividida entre duas formulações", produtos: [
         { nome: "Semente RX340", dose: "49 kg/ha", total: "3.880 kg" },
         { nome: "Semente Aveia Preta", dose: "77 kg/ha", total: "850 kg", nota: "IAPAR 139 — mesma semente usada no Campo 8" },
         { nome: "Adubo 11-52-00", dose: "227 kg/ha", total: "14.000 kg", nota: "Substitui o 11-32-00 em parte da área, mesma dose/ha" },
@@ -933,23 +1063,23 @@ const FIELDS = [
 
 // Atualizar sempre que os dados de um campo mudarem
 const LAST_UPDATE = {
-  campo1: { updatedAt: "2026-08-21T15:40:00-03:00", note: "Adicionada 3ª AP fungicida (12/08) com Abacus; preços de Abacus e Miravis Pró incluídos." },
-  campo2: { updatedAt: "2026-08-21T15:40:00-03:00", note: "Adicionada 3ª AP fungicida (18/08) — Trizeb, Fox Xpro, Aureo." },
-  campo3: { updatedAt: "2026-08-21T15:40:00-03:00", note: "Adicionados KCL Aspire (31/07) e 2ª AP fungicida (13/08)." },
-  campo4: { updatedAt: "2026-08-18T15:00:00-03:00", note: "Talhão adicionado ao caderno digital." },
-  campo5: { updatedAt: "2026-08-21T15:40:00-03:00", note: "31/07 corrigida (1.414 ml/ha); 4ª AP (10/08) lançada; Pilavante identificado como Pilarvant, similar do Kraton." },
-  campo6: { updatedAt: "2026-08-21T15:40:00-03:00", note: "11/08 — 3ª AP fungicida lançada; Safenith removido do evento de 01/08 (não foi aplicado)." },
-  campo7: { updatedAt: "2026-08-21T15:40:00-03:00", note: "Adicionadas 2ª AP (03/08) e 3ª AP (12/08) de fungicida." },
-  campo8: { updatedAt: "2026-08-18T15:00:00-03:00", note: "Talhão adicionado; possui duas culturas (Cevada 71,0 ha + Aveia 91,2 ha)." },
-  campo9: { updatedAt: "2026-08-21T16:05:00-03:00", note: "Adicionadas AP de potássio (04/08 — KCL + KCL Aspire) e 2ª AP fungicida (13/08 — Echo, Fox Xpro, Aureo)." },
-  campo10: { updatedAt: "2026-08-18T15:00:00-03:00", note: "Talhão adicionado ao caderno digital." },
-  campo11: { updatedAt: "2026-08-21T16:20:00-03:00", note: "Adicionadas AP de potássio (04/08 — KCL Aspire) e 2ª AP fungicida (13/08 — Echo, Fox Xpro, Aureo)." },
-  campo12: { updatedAt: "2026-08-21T16:35:00-03:00", note: "Adicionada dessecação de 17/08 (ZAP QI + Exemplo) — dose e total ainda pendentes no caderno." },
-  campo13: { updatedAt: "2026-08-18T15:00:00-03:00", note: "Talhão adicionado ao caderno digital." },
-  campo14: { updatedAt: "2026-08-18T15:00:00-03:00", note: "Talhão adicionado; dessecação de 11/08 pendente de lançamento completo pelo gerente." },
-  campo15: { updatedAt: "2026-08-18T15:00:00-03:00", note: "Talhão adicionado ao caderno digital." },
-  campo16: { updatedAt: "2026-08-21T17:30:00-03:00", note: "Preço do adubo 11-32-00 lançado (R$ 3.610/t) — custo do talhão fechado." },
-  campo17: { updatedAt: "2026-08-21T17:30:00-03:00", note: "Preços do adubo 11-32-00 e da semente de aveia preta lançados — custo do talhão fechado." },
+  campo1: { updatedAt: "2026-09-14T10:00:00-03:00", note: "Adicionadas 4ª AP (24/08) e 5ª AP (03/09) de fungicida; Ativum entrou como produto novo, preço a confirmar." },
+  campo2: { updatedAt: "2026-09-14T10:20:00-03:00", note: "Data da 3ª AP corrigida de 18/08 para 12/08; adicionadas 4ª AP (25/08) e 5ª AP (03/09) de fungicida." },
+  campo3: { updatedAt: "2026-09-14T10:55:00-03:00", note: "Corrigido: KCL Aspire (31/07) e fungicida (13/08) haviam sido lançados por engano no Campo 4 e foram movidos para cá; doses de Miravis Pró e Iharol acertadas pela foto nova; adicionada 4ª AP (07/09) com Armero." },
+  campo4: { updatedAt: "2026-09-14T13:35:00-03:00", note: "Adicionada dessecação de 18/08. Cultura reclassificada: o RX520/RX340 é mix de cobertura, não milho." },
+  campo5: { updatedAt: "2026-09-14T11:25:00-03:00", note: "Adicionada 5ª AP de fungicida (26/08) — Preventis, Ativum, Pilarvant e Iharol." },
+  campo6: { updatedAt: "2026-09-14T11:40:00-03:00", note: "Adicionados o potássio de 14/07 (KCL Aspire) e a 4ª AP de 07/09 (Armero, Mees, Pilarvant). Corrigidos os totais da 3ª AP de 11/08: Preventis 218,4 L e Trizeb 15,2 L." },
+  campo7: { updatedAt: "2026-09-14T11:55:00-03:00", note: "Adicionada 4ª AP de fungicida (08/09) — Armero, Mees e Pilarvant." },
+  campo8: { updatedAt: "2026-09-14T12:25:00-03:00", note: "Adicionados o potássio de 04/08, a 2ª AP de 13/08 e a 3ª AP de 02/09 (todos na parte de cevada, 71,0 ha). Incluída observação sobre a divisão cevada/aveia do talhão." },
+  campo9: { updatedAt: "2026-09-14T12:55:00-03:00", note: "Adicionada 3ª AP de fungicida (02/09) — Preventis, Miravis Pró, Pilarvant e Iharol. Dose do Exemplo no herbicida de 29/07 confirmada em 985 ml/ha." },
+  campo10: { updatedAt: "2026-09-14T13:35:00-03:00", note: "Adicionados a dessecação parcial de azevém (20/08, 13,0 ha), o potássio de 28/08 (incompleto) e o plantio do milho (02–09/09). Cultura reclassificada: o RX520 de 17/04 é mix de cobertura; o milho da safra é o plantio de setembro, em plantio direto." },
+  campo11: { updatedAt: "2026-09-14T13:55:00-03:00", note: "Adicionada 3ª AP de fungicida (02/09) — Preventis, Miravis Pró, Pilarvant e o par Iharol/Assist na mesma dose." },
+  campo12: { updatedAt: "2026-09-14T14:10:00-03:00", note: "Dessecação de 17/08 completada com a baixa do Celso: ZAP QI 1.982 ml/ha (79,3 L) e Exemplo 1.190 ml/ha (47,6 L). Cultura reclassificada: o RX520 é mix de cobertura, não milho." },
+  campo13: { updatedAt: "2026-09-14T14:25:00-03:00", note: "Adicionada dessecação de 17/08 (ZAP QI e Exemplo). Cultura reclassificada: o RX520 é mix de cobertura, não milho." },
+  campo14: { updatedAt: "2026-09-14T14:40:00-03:00", note: "Dessecação de 11/08 completada com a baixa do Celso (ZAP QI e Exemplo) e adicionada a dessecação de gramíneas resistentes de 20/08 (Freno e Mees). Cultura reclassificada: o RX520 é mix de cobertura." },
+  campo15: { updatedAt: "2026-09-14T14:55:00-03:00", note: "Adicionada dessecação de 17/08 (ZAP QI e Exemplo). Cultura reclassificada: o RX520 é mix de cobertura, não milho." },
+  campo16: { updatedAt: "2026-09-14T13:35:00-03:00", note: "Cultura reclassificada: o RX340 é mix de cobertura, não milho." },
+  campo17: { updatedAt: "2026-09-14T15:15:00-03:00", note: "Os quatro eventos foram reconferidos com a foto do caderno e estão corretos. Incluída observação sobre a área de 88,0 ha, que foi deduzida por cálculo — o cabeçalho do caderno não traz a área deste talhão." },
 };
 
 const STORAGE_PREFIX = "rossato_last_viewed:";
@@ -1162,6 +1292,9 @@ function renderField() {
     costHtml = ` · <span style="font-style:italic; font-size:11.5px;">Custo ainda não calculado (faltam preços dos insumos usados)</span>`;
   }
   summary.innerHTML = `<strong>${field.nome}</strong> · Área: ${field.area.toFixed(1)} ha · Cultura: ${field.cultura} · Cultivar(es): ${field.cultivares} · ${field.eventos.length} eventos registrados${costHtml}`;
+  if (field.observacao) {
+    summary.innerHTML += `<div class="field-note"><span class="field-note-label">Observação</span>${field.observacao}</div>`;
+  }
 
   const container = document.getElementById("eventos");
   container.innerHTML = "";
