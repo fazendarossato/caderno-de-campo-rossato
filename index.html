@@ -189,6 +189,17 @@ body.orto-open{overflow:hidden}
 #install-banner[hidden]{display:none}
 #install-banner button{background:var(--dour-s);color:var(--dour-d);border-radius:12px;padding:10px 16px;font-weight:700;min-height:44px}
 #install-banner .x{background:none;color:var(--bg);font-size:1.2rem;padding:10px}
+.a2bg{position:fixed;inset:0;background:rgba(20,20,15,.5);z-index:60}
+.a2{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--bg);color:var(--ink);border-radius:28px 28px 0 0;max-width:640px;margin:0 auto;border:2px solid var(--bd);border-bottom:0;box-shadow:0 -12px 40px rgba(0,0,0,.28);
+  padding:22px max(20px,env(safe-area-inset-left,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-right,0px));max-height:92%;overflow:auto}
+.a2 img{display:block;width:72px;height:72px;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.a2 h2{font-size:1.65rem;line-height:1.15;margin:14px 0 8px}
+.a2p{font-size:1.15rem;color:var(--ink2);margin:0 0 18px}
+.a2b{display:block;width:100%;min-height:62px;border-radius:18px;font-size:1.2rem;font-weight:700;text-align:center;margin-top:10px;padding:14px}
+.a2b.p{background:var(--ink);color:var(--bg)} .a2b.s{border:2px solid var(--bd);background:var(--card)}
+.a2l{list-style:none;margin:12px 0 8px;padding:0;display:grid;gap:14px}
+.a2l li{display:flex;gap:14px;align-items:flex-start;font-size:1.18rem;line-height:1.35}
+.a2n{flex:none;width:36px;height:36px;border-radius:50%;background:var(--dour-s);color:var(--dour-d);border:2px solid var(--dour);display:grid;place-items:center;font-weight:700}
 </style>
 </head>
 <body>
@@ -196,7 +207,6 @@ body.orto-open{overflow:hidden}
 
 <div class="wrap" id="app"></div>
 <nav class="tabs" aria-label="Seções"><div class="in" id="tabsin"></div></nav>
-<div id="install-banner" hidden><span>Instale na tela inicial para abrir offline no campo.</span><div style="display:flex;gap:4px;align-items:center"><button id="installBtn">Instalar</button><button class="x" id="dismissInstall" aria-label="Fechar">✕</button></div></div>
 
 <script>
 const FIELDS = [
@@ -1863,9 +1873,62 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('toggle',e=>{const d=e.target;if(d.open&&d.querySelector&&d.classList&&d.classList.contains('ans')){d.querySelectorAll('.rain').forEach(el=>{el.scrollLeft=el.scrollWidth;});}},true);
 
-// instalar como app
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;try{if(localStorage.getItem('rossato_install_dismissed'))return;}catch(x){}const b=document.getElementById('install-banner');if(b)b.hidden=false;});
+
+// ===================== Colocar o app na tela inicial =====================
+const A2={ev:null,ua:navigator.userAgent||'',open:false,mode:'ask'};
+A2.standalone=()=>{try{return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;}catch(e){return false;}};
+A2.ios=()=>/iPad|iPhone|iPod/.test(A2.ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+A2.mobile=()=>A2.ios()||/Android/.test(A2.ua);
+A2.inapp=()=>/FBAN|FBAV|Instagram|MicroMessenger|Messenger|; wv\)/.test(A2.ua);
+A2.get=k=>{try{return localStorage.getItem(k);}catch(e){return null;}};
+A2.set=(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}};
+A2.done=()=>A2.get('rossato_a2hs_done')==='1';
+A2.eligible=()=>!A2.standalone()&&!A2.done()&&(A2.mobile()||!!A2.ev);
+A2.snoozed=()=>{const t=+A2.get('rossato_a2hs_snooze')||0;return Date.now()-t<7*864e5;};
+const SHARE_SVG='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-6px"><path d="M12 15V3M8 7l4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+const DOTS_SVG='<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" style="vertical-align:-6px"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
+function a2Steps(){
+  if(A2.inapp()) return `<p class="a2p">Você abriu o link dentro de outro aplicativo. Toque nos três pontinhos ou no ícone de compartilhar e escolha <b>${A2.ios()?'Abrir no Safari':'Abrir no Chrome'}</b>. Depois toque aqui de novo.</p>`;
+  const st=A2.ios()
+   ?[`Toque no botão <b>Compartilhar</b> ${SHARE_SVG}, na parte de baixo da tela (ou no alto, no iPad).`,`Role a lista para cima e toque em <b>Adicionar à Tela de Início</b>.`,`Toque em <b>Adicionar</b>, no canto de cima. O ícone do A aparece na sua tela.`]
+   :[`Toque nos <b>três pontinhos</b> ${DOTS_SVG} no canto de cima da tela.`,`Toque em <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.`,`Toque em <b>Instalar</b> para confirmar. O ícone do A aparece na sua tela.`];
+  return `<ol class="a2l">${st.map((t,i)=>`<li><span class="a2n">${i+1}</span><span>${t}</span></li>`).join('')}</ol>`;
+}
+function a2Html(){
+  const logo='<img src="icon-192.png" alt="" width="72" height="72">';
+  if(A2.mode==='steps') return `${logo}<h2>Como colocar na tela inicial</h2>${a2Steps()}<button class="a2b p" data-a2="close">Entendi</button>`;
+  return `${logo}<h2>Deixar o app na tela do celular?</h2><p class="a2p">Assim você abre com um toque, como qualquer aplicativo. Funciona até sem sinal.</p>
+    <button class="a2b p" data-a2="yes">Sim, colocar na tela inicial</button><button class="a2b s" data-a2="no">Agora não</button>`;
+}
+function a2Open(mode){
+  if(!A2.eligible()) return;
+  A2.mode=mode||'ask'; A2.open=true;
+  let box=document.getElementById('a2box');
+  if(!box){box=document.createElement('div');box.id='a2box';document.body.appendChild(box);}
+  box.innerHTML=`<div class="a2bg" data-a2="no"></div><div class="a2" role="dialog" aria-modal="true" aria-label="Colocar o app na tela inicial">${a2Html()}</div>`;
+}
+function a2Close(snooze){
+  A2.open=false;const box=document.getElementById('a2box');if(box)box.remove();
+  if(snooze)A2.set('rossato_a2hs_snooze',String(Date.now()));
+}
+function a2Card(){
+  if(!A2.eligible()) return '';
+  return `<button class="btn alt" data-a2="card" style="margin-top:22px"><span><span class="rn" style="display:block">Colocar na tela do celular</span><span class="rs">Abre com um toque, como um aplicativo</span></span><span class="ar">›</span></button>`;
+}
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-a2]'); if(!b) return;
+  const a=b.dataset.a2;
+  if(a==='card'){a2Open('ask');return;}
+  if(a==='no'||a==='close'){a2Close(true);return;}
+  if(a==='yes'){
+    if(A2.ev){const ev=A2.ev;A2.ev=null;a2Close(false);try{ev.prompt();const r=await ev.userChoice;if(r&&r.outcome==='accepted'){A2.set('rossato_a2hs_done','1');}else{A2.set('rossato_a2hs_snooze',String(Date.now()));}}catch(x){}
+      if(typeof render==='function')render();return;}
+    A2.mode='steps';a2Open('steps');
+  }
+});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();A2.ev=e;if(typeof render==='function'&&location.hash.replace('#','')==='')render();});
+window.addEventListener('appinstalled',()=>{A2.set('rossato_a2hs_done','1');a2Close(false);if(typeof render==='function')render();});
+window.addEventListener('load',()=>{setTimeout(()=>{if(A2.eligible()&&!A2.snoozed()&&location.hash.replace('#','')==='')a2Open('ask');},1800);});
 
 
 function stackBar(parts){ const tot=parts.reduce((a,p)=>a+p.v,0)||1; return parts.filter(p=>p.v>0).map(p=>`<i class="${p.cls}" style="width:${p.v/tot*100}%"></i>`).join(''); }
@@ -1877,7 +1940,7 @@ function homeView(){
   <p class="q hometxt" style="font-size:1.35rem;margin:18px 0 24px">O que você quer ver hoje?</p>
   <div class="pick">
     <button class="tile t-c" data-go="caderno" aria-label="Abrir o Caderno de Campo"><svg class="ill" viewBox="0 0 200 200" role="img" aria-label="Caderno de Campo"><defs><linearGradient id="cdbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFCF1"/><stop offset="1" stop-color="#F1EAD3"/></linearGradient><linearGradient id="cdgl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="cdcl"><rect width="200" height="200" rx="46"/></clipPath></defs><g clip-path="url(#cdcl)"><rect width="200" height="200" fill="url(#cdbg)"/><rect width="200" height="90" fill="url(#cdgl)"/><image href="${CDIMG}" x="22" y="30" width="156" height="140" preserveAspectRatio="xMidYMid meet"/><rect x="1" y="1" width="198" height="198" rx="45" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"/></g></svg><span class="lab">Caderno de Campo</span><span class="sb2">Ver ›</span></button>
-    <button class="tile t-m" data-go="maquinas" aria-label="Ver as máquinas"><svg class="ill" viewBox="0 0 200 200" role="img" aria-label="Máquinas"><defs><linearGradient id="trbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFCF1"/><stop offset="1" stop-color="#F1EAD3"/></linearGradient><linearGradient id="trgl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="trcl"><rect width="200" height="200" rx="46"/></clipPath></defs><g clip-path="url(#trcl)"><rect width="200" height="200" fill="url(#trbg)"/><rect width="200" height="90" fill="url(#trgl)"/><image href="${TRIMG}" x="14" y="40" width="172" height="130" preserveAspectRatio="xMidYMid meet"/><rect x="1" y="1" width="198" height="198" rx="45" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"/></g></svg><span class="lab">Máquinas</span><span class="sb2">Ver ›</span></button></div></div>`;
+    <button class="tile t-m" data-go="maquinas" aria-label="Ver as máquinas"><svg class="ill" viewBox="0 0 200 200" role="img" aria-label="Máquinas"><defs><linearGradient id="trbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFCF1"/><stop offset="1" stop-color="#F1EAD3"/></linearGradient><linearGradient id="trgl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="trcl"><rect width="200" height="200" rx="46"/></clipPath></defs><g clip-path="url(#trcl)"><rect width="200" height="200" fill="url(#trbg)"/><rect width="200" height="90" fill="url(#trgl)"/><image href="${TRIMG}" x="14" y="40" width="172" height="130" preserveAspectRatio="xMidYMid meet"/><rect x="1" y="1" width="198" height="198" rx="45" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"/></g></svg><span class="lab">Máquinas</span><span class="sb2">Ver ›</span></button></div>${a2Card()}</div>`;
 }
 
 function hubView(){
@@ -2018,8 +2081,6 @@ function bind(){
 function keep(fn){const y=window.scrollY;fn();window.scrollTo(0,y);}
 function go(h){ if(location.hash.replace('#','')===h){render();window.scrollTo(0,0);return;} location.hash=h; }
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0);});
-document.getElementById('installBtn').onclick=async()=>{document.getElementById('install-banner').hidden=true;if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;}};
-document.getElementById('dismissInstall').onclick=()=>{document.getElementById('install-banner').hidden=true;try{localStorage.setItem('rossato_install_dismissed','1');}catch(e){}};
 render();
 </script>
 
