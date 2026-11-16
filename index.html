@@ -164,8 +164,12 @@ details.aviso p{margin:10px 0 0;font-size:1rem}
 .evh{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 14px;font-weight:700;font-size:1.05rem}
 .ev .lg{margin:0;padding:0 14px 4px}.ev .evn{margin:0;padding:10px 14px 0;font-size:.98rem;color:var(--ink2)}
 .ty-azul{background:var(--azul-s);color:var(--azul-d)} .ty-verde{background:var(--verde-s);color:var(--verde-d)} .ty-terra{background:var(--terra-s);color:var(--terra-d)} .ty-dour{background:var(--dour-s);color:var(--dour-d)}
-.rb{fill:var(--azul);cursor:pointer} .rb:hover{fill:var(--azul-d)}
-.rain{padding-bottom:6px}
+.cm{margin:18px 0 6px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px solid var(--azul);padding-bottom:4px}
+.cm span{font-variant-numeric:tabular-nums;color:var(--azul-d);white-space:nowrap}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:0 14px;margin:0;padding:0;list-style:none}
+.cg li{display:flex;justify-content:space-between;gap:6px;padding:6px 0;border-bottom:1px solid var(--line);font-size:1rem;font-variant-numeric:tabular-nums}
+.cg li b{font-weight:700}
+.cg li.z{color:var(--ink2)} .cg li.z b{font-weight:400}
 .nd{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
 .ndh{display:flex;justify-content:space-between;gap:10px;font-size:1.1rem}
 .ndimg{display:block;width:100%;height:auto;border-radius:14px;margin:8px 0 2px;background:var(--line)}
@@ -1609,7 +1613,7 @@ const FIELDS = [
   },
   {
     id: "campo16", nome: "Campo 16", area: 35.0, cultura: "Mix de cobertura", cultivares: "RX340",
-    safraInverno: { cultura: "Mix de cobertura", cultivares: "RX340" }, safraVerao: { cultura: "Soja (a confirmar)", cultivares: "plantio ainda não registrado no caderno" }, verãoDesde: "21/10/2026",
+    safraInverno: { cultura: "Mix de cobertura", cultivares: "RX340" }, safraVerao: { cultura: "Soja", cultivares: "plantio ainda não registrado no caderno" }, verãoDesde: "21/10/2026",
     geo: { lat: -24.417472, lon: -50.173082 },
     limite: [[[-50.17084,-24.420353],[-50.172103,-24.420293],[-50.172441,-24.420201],[-50.172854,-24.419868],[-50.173208,-24.420103],[-50.173734,-24.419282],[-50.174871,-24.418254],[-50.175386,-24.418166],[-50.17549,-24.418241],[-50.176315,-24.41799],[-50.177098,-24.417355],[-50.177684,-24.416619],[-50.178443,-24.4159],[-50.178872,-24.416054],[-50.179986,-24.415746],[-50.180079,-24.415948],[-50.179988,-24.416129],[-50.179788,-24.416263],[-50.179328,-24.416352],[-50.179167,-24.416548],[-50.179526,-24.417168],[-50.179779,-24.41709],[-50.180021,-24.417206],[-50.180454,-24.416801],[-50.18034,-24.416626],[-50.180659,-24.416233],[-50.180767,-24.415848],[-50.180686,-24.415218],[-50.18025,-24.414661],[-50.179282,-24.414262],[-50.179042,-24.414262],[-50.178837,-24.414382],[-50.176639,-24.416681],[-50.174348,-24.417281],[-50.173165,-24.417303],[-50.172509,-24.417007],[-50.172127,-24.416688],[-50.170545,-24.41447],[-50.170352,-24.41446],[-50.169075,-24.41668],[-50.167494,-24.417761],[-50.167719,-24.41779],[-50.167891,-24.417947],[-50.168599,-24.419163],[-50.168872,-24.419192],[-50.169904,-24.419737]]],
     pluviometria: {
@@ -1642,7 +1646,7 @@ const FIELDS = [
   },
   {
     id: "campo17", nome: "Campo 17", area: 88.0, cultura: "Mix de cobertura + Aveia preta", cultivares: "RX340",
-    safraInverno: { cultura: "Mix de cobertura + Aveia preta", cultivares: "RX340" }, safraVerao: { cultura: "Soja (a confirmar)", cultivares: "plantio ainda não registrado no caderno" }, verãoDesde: null,
+    safraInverno: { cultura: "Mix de cobertura + Aveia preta", cultivares: "RX340" }, safraVerao: { cultura: "Soja", cultivares: "plantio ainda não registrado no caderno" }, verãoDesde: null,
     geo: { lat: -24.421964, lon: -50.201327 },
     limite: [[[-50.197523,-24.428196],[-50.19801,-24.428104],[-50.198905,-24.427674],[-50.199801,-24.427388],[-50.200808,-24.426874],[-50.201954,-24.425798],[-50.201597,-24.425001],[-50.201706,-24.424861],[-50.203013,-24.425476],[-50.203815,-24.425525],[-50.203876,-24.425573],[-50.203775,-24.425729],[-50.203941,-24.42584],[-50.204491,-24.425913],[-50.205093,-24.425754],[-50.205642,-24.425367],[-50.206499,-24.425165],[-50.207649,-24.424627],[-50.20824,-24.423712],[-50.209517,-24.42285],[-50.21023,-24.421825],[-50.210343,-24.421453],[-50.210128,-24.42128],[-50.20971,-24.421341],[-50.209067,-24.421639],[-50.208443,-24.421656],[-50.208191,-24.421858],[-50.207856,-24.422483],[-50.20704,-24.42312],[-50.206587,-24.423002],[-50.20613,-24.422561],[-50.206085,-24.42228],[-50.20626,-24.421955],[-50.206192,-24.421593],[-50.205766,-24.420704],[-50.205675,-24.419911],[-50.205181,-24.419044],[-50.205159,-24.418648],[-50.205497,-24.417973],[-50.206016,-24.417485],[-50.206157,-24.417134],[-50.206138,-24.41694],[-50.205852,-24.416753],[-50.205251,-24.416863],[-50.204796,-24.417099],[-50.204004,-24.417728],[-50.203636,-24.417743],[-50.203543,-24.417428],[-50.203614,-24.41695],[-50.203342,-24.416449],[-50.20364,-24.416117],[-50.203918,-24.416117],[-50.204108,-24.415921],[-50.204003,-24.414308],[-50.203625,-24.41352],[-50.203125,-24.413033],[-50.202625,-24.413066],[-50.201933,-24.412765],[-50.20122,-24.412757],[-50.200907,-24.412658],[-50.20081,-24.412718],[-50.201082,-24.414154],[-50.201122,-24.417765],[-50.202003,-24.419647],[-50.202266,-24.420688],[-50.202141,-24.421914],[-50.201846,-24.422702],[-50.203051,-24.42315],[-50.203215,-24.423416],[-50.202963,-24.42379],[-50.20189,-24.424583],[-50.2015,-24.424675],[-50.201289,-24.424572],[-50.201105,-24.423887],[-50.200922,-24.423761],[-50.199236,-24.425151],[-50.197882,-24.425991],[-50.197025,-24.426234],[-50.195487,-24.42634],[-50.194214,-24.425957],[-50.19261,-24.424623],[-50.191638,-24.424141],[-50.190689,-24.423894],[-50.187787,-24.423572],[-50.187651,-24.42362],[-50.187786,-24.423886],[-50.187711,-24.424633],[-50.188402,-24.42535],[-50.189244,-24.42553],[-50.191149,-24.425583],[-50.19233,-24.4258],[-50.193201,-24.426529],[-50.194502,-24.427232],[-50.195892,-24.427514],[-50.196362,-24.427673],[-50.197118,-24.428137]]],
     pluviometria: {
@@ -2019,13 +2023,83 @@ const SAFRA_LABEL={inverno:'Safra Inverno 2026',verao:'Safra Verão 2026/27'};
 function eventCost(ev){let t=0,ok=false;ev.produtos.forEach(p=>{const pr=PRICES[p.nome],q=parseNumberPT(p.total);if(pr&&q!==null){t+=q*pr.price;ok=true;}});return ok?t:null;}
 const brl2 = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
 
-function rainChart(d){
-  const v=d.valores,n=v.length,H=110,BASE=2,bw=6,W=n*bw,mx=Math.max(...v,1);
-  const s0=new Date(d.inicio+'T12:00:00'); let bars='';
-  for(let i=0;i<n;i++){const h=Math.max(v[i]/mx*(H-18),v[i]>0?1.5:.6);const dt=new Date(s0);dt.setDate(s0.getDate()+i);
-    bars+=`<rect class="rb" data-d="${dt.toLocaleDateString('pt-BR')}" data-v="${fnum(v[i])}" x="${i*bw}" y="${(H-BASE-h).toFixed(1)}" width="${bw-1.4}" height="${h.toFixed(1)}" rx="1.5"/>`;}
-  return `<div class="yrs rain"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Chuva por dia desde o plantio">${bars}</svg></div>
-    <p class="hint" id="rainread">Toque numa barra para ver o dia. Maior chuva: ${fnum(mx)} mm em um dia.</p>`;
+// ===================== Chuva: tabela diária por safra =====================
+// Regra: a contagem começa no primeiro dia de plantio da safra e termina na colheita
+// (campo "colheita" em safraInverno/safraVerao, formato "DD/MM/AAAA"). Sem colheita informada,
+// vai até o dado mais recente; no inverno, se o campo já tem plantio de verão, para na véspera dele.
+const CHUVA_KEY='rossato-chuva-v1';
+let CHUVA_LIVE=null;
+try{const raw=localStorage.getItem(CHUVA_KEY); if(raw){const o=JSON.parse(raw); if(o&&o.series) CHUVA_LIVE=o;}}catch(e){}
+const isoDe=str=>{const k=dataChave(str);return k.slice(0,4)+'-'+k.slice(4,6)+'-'+k.slice(6,8);};
+const dIso=iso=>new Date(iso+'T12:00:00');
+const isoD=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const addDias=(iso,n)=>{const d=dIso(iso);d.setDate(d.getDate()+n);return isoD(d);};
+const difDias=(a,b)=>Math.round((dIso(b)-dIso(a))/864e5);
+const ddmm=iso=>iso.slice(8,10)+'/'+iso.slice(5,7);
+const ddmmaa=iso=>ddmm(iso)+'/'+iso.slice(0,4);
+const MESES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+function serieChuva(f){
+  const emb=f.pluviometria&&f.pluviometria.diario, live=CHUVA_LIVE&&CHUVA_LIVE.series&&CHUVA_LIVE.series[f.id];
+  if(live&&live.valores&&live.valores.length){
+    if(!emb||addDias(live.inicio,live.valores.length-1)>=addDias(emb.inicio,emb.valores.length-1)) return live;
+  }
+  return emb||null;
+}
+function plantioInicio(f,safra){const e=evsSafra(f,safra).find(ev=>ev.tipo==='Plantio');return e?isoDe(e.data):null;}
+function chuvaSafra(f,safra){
+  const ini=plantioInicio(f,safra); if(!ini) return {semPlantio:true};
+  const info=infoSafra(f,safra), s=serieChuva(f);
+  let fim=null, motivo='atual';
+  if(info.colheita){fim=isoDe(info.colheita);motivo='colheita';}
+  else if(safra==='inverno'){const pv=plantioInicio(f,'verao'); if(pv){fim=addDias(pv,-1);motivo='proxima';}}
+  if(!s) return {ini,fim,motivo,dias:[]};
+  const sIni=s.inicio, sFim=addDias(sIni,s.valores.length-1);
+  const a=ini>sIni?ini:sIni, b=(fim&&fim<sFim)?fim:sFim, dias=[];
+  for(let d=a;d<=b;d=addDias(d,1)) dias.push({d,v:s.valores[difDias(sIni,d)]||0});
+  return {ini,fim,motivo,dias,ref:sFim,fechada:!!(fim&&fim<=sFim),faltaInicio:a>ini?a:null,total:dias.reduce((t,x)=>t+x.v,0)};
+}
+function chuvaTabela(dias){
+  const g=[]; dias.forEach(x=>{const k=x.d.slice(0,7); if(!g.length||g[g.length-1].k!==k) g.push({k,l:[]}); g[g.length-1].l.push(x);});
+  return g.map(m=>{const t=m.l.reduce((a,x)=>a+x.v,0);return `<div class="cm">${MESES[+m.k.slice(5,7)-1]} de ${m.k.slice(0,4)}<span>${fnum(t)} mm</span></div><ul class="cg">${m.l.map(x=>`<li class="${x.v>0?'':'z'}"><span>${ddmm(x.d)}</span><b>${fnum(x.v)}</b></li>`).join('')}</ul>`;}).join('');
+}
+function chuvaCard(f,safra){
+  if(!f.geo||!f.pluviometria) return '';
+  const g=f.geo, ch=chuvaSafra(f,safra);
+  const loc=`<li><span class="n">Localização<small>centro do campo</small></span><span class="p">${Math.abs(g.lat).toFixed(4).replace('.',',')}°${g.lat<0?'S':'N'}, ${Math.abs(g.lon).toFixed(4).replace('.',',')}°${g.lon<0?'O':'L'}</span></li>`;
+  if(ch.semPlantio) return `<details class="ans a2"><summary><small>Quanto choveu?</small><b>Aguardando plantio</b><span class="sub">a chuva conta a partir do primeiro dia de plantio</span></summary><div class="det"><p>O plantio desta safra ainda não está no caderno. Quando a data entrar, a tabela de chuva começa no primeiro dia de plantio.</p></div></details>`;
+  if(!ch.dias.length) return `<details class="ans a2"><summary><small>Quanto choveu?</small><b>Sem dados ainda</b><span class="sub">plantio iniciado em ${ddmmaa(ch.ini)}</span></summary><div class="det"><p>A chuva deste período ainda não foi baixada neste aparelho. Abra o app com internet e ela é atualizada sozinha.</p></div></details>`;
+  const n=ch.dias.length, ult=ch.dias[n-1].d, u30=ch.dias.slice(-30).reduce((t,x)=>t+x.v,0), mx=ch.dias.reduce((m,x)=>x.v>m.v?x:m,ch.dias[0]);
+  const fimTxt=!ch.fechada?'dado mais recente; colheita ainda não informada':ch.motivo==='colheita'?'colheita':'véspera do plantio de verão';
+  return `<details class="ans a2"><summary><small>Quanto choveu?</small><b>${fnum(ch.total)} <span>mm</span></b><span class="sub">${ch.faltaInicio?'de '+ddmm(ch.faltaInicio):'do plantio ('+ddmm(ch.ini)+')'} até ${ddmm(ult)}, em ${n} ${n===1?'dia':'dias'}</span></summary><div class="det">
+      <ul class="lg"><li><span class="n">Início do plantio</span><span class="p">${ddmmaa(ch.ini)}</span></li>
+      <li><span class="n">Fim da contagem<small>${fimTxt}</small></span><span class="p">${ddmmaa(ult)}</span></li>
+      <li><span class="n">Últimos 30 dias da contagem</span><span class="p">${fnum(u30)} mm</span></li>
+      <li><span class="n">Maior chuva em um dia</span><span class="p">${fnum(mx.v)} mm<small>${ddmm(mx.d)}</small></span></li>${loc}</ul>
+      ${ch.faltaInicio?`<p class="hint">Neste aparelho os dados começam em ${ddmmaa(ch.faltaInicio)}. Abra o app com internet para completar desde o primeiro dia de plantio.</p>`:''}
+      <p><b>Chuva de cada dia</b>, em milímetros</p>
+      ${chuvaTabela(ch.dias)}
+      <p class="hint" style="margin-top:16px">Estimativa pelas coordenadas do campo, com dados Open-Meteo/ERA5 até ${ddmmaa(ch.ref)}. O app busca a chuva nova sozinho sempre que abre com internet. A contagem começa no primeiro dia de plantio e termina na colheita; enquanto a colheita não é informada, vai até o dado mais recente. A grade é regional (cerca de 9 a 11 km): campos vizinhos mostram a mesma chuva, e a diferença vem da data de plantio.</p></div></details>`;
+}
+function atualizarChuva(){
+  if(typeof fetch!=='function'||(typeof navigator!=='undefined'&&navigator.onLine===false)) return;
+  if(CHUVA_LIVE&&CHUVA_LIVE.fetchedAt&&Date.now()-CHUVA_LIVE.fetchedAt<6*3600*1000) return;
+  const fs=FIELDS.filter(f=>f.geo); let ini=null;
+  FIELDS.forEach(f=>f.eventos.forEach(ev=>{if(ev.tipo==='Plantio'){const d=isoDe(ev.data); if(!ini||d<ini) ini=d;}}));
+  if(!fs.length||!ini) return;
+  const hoje=isoD(new Date());
+  const url=fim=>'https://archive-api.open-meteo.com/v1/archive?latitude='+fs.map(f=>f.geo.lat).join(',')+'&longitude='+fs.map(f=>f.geo.lon).join(',')+'&start_date='+ini+'&end_date='+fim+'&daily=precipitation_sum&timezone=America%2FSao_Paulo';
+  const pega=fim=>fetch(url(fim)).then(r=>{if(!r.ok) throw new Error('http '+r.status);return r.json();});
+  pega(hoje).catch(()=>pega(addDias(hoje,-6))).then(j=>{
+    const arr=Array.isArray(j)?j:[j], series={};
+    if(arr.length!==fs.length) return;
+    arr.forEach((o,i)=>{const t=o&&o.daily&&o.daily.time, v=o&&o.daily&&o.daily.precipitation_sum; if(!t||!v||!t.length) return;
+      let n=v.length; while(n>0&&typeof v[n-1]!=='number') n--;
+      if(n) series[fs[i].id]={inicio:t[0],valores:v.slice(0,n).map(x=>typeof x==='number'?Math.round(x*10)/10:0)};});
+    if(Object.keys(series).length!==fs.length) return;
+    CHUVA_LIVE={fetchedAt:Date.now(),series};
+    try{localStorage.setItem(CHUVA_KEY,JSON.stringify(CHUVA_LIVE));}catch(e){}
+    if(/^campo-\d+$/.test(location.hash.replace('#',''))&&!document.querySelector('#app details[open]')) keep(render);
+  }).catch(()=>{});
 }
 
 function fieldMap(limite,areaHa){
@@ -2097,12 +2171,7 @@ function campoView(f,safra){
     h+=`<div class="aviso"><b>Ainda sem registro.</b> Nenhuma aplicação do caderno de campo está marcada nesta safra (${esc(SAFRA_LABEL[safra])}) para este campo até agora.</div>`;
   }
   // chuva
-  if(f.geo&&f.pluviometria){const p=f.pluviometria,g=f.geo;
-    h+=`<details class="ans a2"><summary><small>Quanto choveu?</small><b>${fnum(p.acumuladoDesdePlantioMm)} <span>mm</span></b><span class="sub">desde o plantio, em ${p.diasDesdePlantio} dias</span></summary><div class="det">
-      <ul class="lg"><li><span class="n">Plantio<small>referência</small></span><span class="p">${esc(p.plantioRef)}</span></li><li><span class="n">Últimos 30 dias</span><span class="p">${fnum(p.ultimos30dMm)} mm</span></li>
-      <li><span class="n">Localização<small>centro do campo</small></span><span class="p">${Math.abs(g.lat).toFixed(4).replace('.',',')}°${g.lat<0?'S':'N'}, ${Math.abs(g.lon).toFixed(4).replace('.',',')}°${g.lon<0?'O':'L'}</span></li></ul>
-      ${p.diario?rainChart(p.diario):''}
-      <p class="hint">Estimativa pelas coordenadas do campo, com dados Open-Meteo/ERA5 até ${new Date(p.dataReferencia+'T12:00:00').toLocaleDateString('pt-BR')}. A grade é regional (cerca de 9 a 11 km): campos vizinhos mostram a mesma chuva, e a diferença vem da data de plantio.</p></div></details>`;}
+  h+=chuvaCard(f,safra);
   // lavoura (satélite)
   const iv=f.indicesVegetacao;
   if(iv){const e=iv.evolucaoNdvi, l=e[e.length-1];
@@ -2131,25 +2200,23 @@ function campoView(f,safra){
 
 function custosView(){
   const safra=currentSafra;
-  const L=FIELDS.map(f=>({f,c:computeFieldCost(f,evsSafra(f,safra))})), tot=L.reduce((s,l)=>s+l.c.total,0), area=FIELDS.reduce((s,f)=>s+f.area,0);
+  const L=FIELDS.map(f=>({f,n:evsSafra(f,safra).length,c:computeFieldCost(f,evsSafra(f,safra))})), tot=L.reduce((s,l)=>s+l.c.total,0), comReg=L.filter(l=>l.n), area=comReg.reduce((s,l)=>s+l.f.area,0)||1, semReg=L.length-comReg.length;
   const mx=Math.max(...L.map(l=>l.c.total/l.f.area),1), inc=L.filter(l=>l.c.missing.length).length;
   const datas=FIELDS.map(f=>new Date(LAST_UPDATE[f.id].updatedAt).getTime());
   return `<div class="view top"><button class="back" data-go="caderno-${safra}">‹ Campos</button><h1>Custo da safra</h1>
   <p class="q">Insumos aplicados em cada campo nesta safra (${esc(SAFRA_LABEL[safra])}), pelo que está no caderno.</p>
-  <div class="tot a3"><small>Total em insumos, ${esc(SAFRA_LABEL[safra])}</small><b>${brl2(tot)}</b><span class="sub">${brl2(tot/area)} por hectare · ${fnum(area)} ha</span></div>
+  <div class="tot a3"><small>Total em insumos, ${esc(SAFRA_LABEL[safra])}</small><b>${brl2(tot)}</b><span class="sub">${brl2(tot/area)} por hectare · ${fnum(area)} ha em ${comReg.length} ${comReg.length===1?'campo':'campos'} com aplicações</span></div>
+  ${semReg?`<p class="hint">${semReg} ${semReg===1?'campo ainda não tem':'campos ainda não têm'} aplicações registradas nesta safra e ${semReg===1?'aparece':'aparecem'} sem custo.</p>`:''}
   ${inc?`<p class="hint">${inc} ${inc===1?'campo está':'campos estão'} com a conta parcial, por falta de preço de algum insumo.</p>`:`<p class="hint">Todos os campos com custo fechado.</p>`}
   <h2>Por campo, em reais por hectare</h2>
-  ${L.map(({f,c})=>{const ph=c.total/f.area;return `<button class="cr" data-go="campo-${FID(f)}"><div class="h"><b>${esc(f.nome)}<em> ${esc(f.cultura)}</em></b><span>${brl2(ph)}/ha</span></div><div class="bar" style="width:${Math.max(ph/mx*100,2)}%"><i style="width:100%;background:var(--verde)"></i></div><div class="hint" style="margin:4px 0 0">${brl2(c.total)} em ${fnum(f.area)} ha${c.missing.length?' · parcial, faltam preços':''}</div></button>`;}).join('')}
+  ${L.map(({f,n,c})=>{const ph=c.total/f.area, cult=esc(infoSafra(f,safra).cultura);return n?`<button class="cr" data-go="campo-${FID(f)}"><div class="h"><b>${esc(f.nome)}<em> ${cult}</em></b><span>${brl2(ph)}/ha</span></div><div class="bar" style="width:${Math.max(ph/mx*100,2)}%"><i style="width:100%;background:var(--verde)"></i></div><div class="hint" style="margin:4px 0 0">${brl2(c.total)} em ${fnum(f.area)} ha${c.missing.length?' · parcial, faltam preços':''}</div></button>`:`<button class="cr" data-go="campo-${FID(f)}"><div class="h"><b>${esc(f.nome)}<em> ${cult}</em></b><span>—</span></div><div class="hint" style="margin:4px 0 0">${fnum(f.area)} ha · ainda sem aplicações registradas nesta safra</div></button>`;}).join('')}
   <p class="foot">Totais anotados no caderno vezes o preço unitário de cada insumo. Atualização mais recente: ${new Date(Math.max(...datas)).toLocaleDateString('pt-BR')}.</p></div>`;
 }
 
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-orto-open]');
   if(b&&currentField&&currentField.ortofoto){OrtoViewer.open(currentField.ortofoto.imagem,'Foto do drone · '+currentField.nome+' · '+currentField.ortofoto.data);return;}
-  const r=e.target.closest('.rb');
-  if(r){const o=document.getElementById('rainread');if(o)o.textContent=r.dataset.d+': '+r.dataset.v+' mm';}
 });
-document.addEventListener('toggle',e=>{const d=e.target;if(d.open&&d.querySelector&&d.classList&&d.classList.contains('ans')){d.querySelectorAll('.rain').forEach(el=>{el.scrollLeft=el.scrollWidth;});}},true);
 
 
 // ===================== Colocar o app na tela inicial =====================
@@ -2361,6 +2428,8 @@ function keep(fn){const y=window.scrollY;fn();window.scrollTo(0,y);}
 function go(h){ if(location.hash.replace('#','')===h){render();window.scrollTo(0,0);return;} location.hash=h; }
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0);});
 render();
+atualizarChuva();
+window.addEventListener('online',atualizarChuva);
 </script>
 
 </body>
