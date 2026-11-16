@@ -194,10 +194,10 @@ body.orto-open{overflow:hidden}
 #install-banner button{background:var(--dour-s);color:var(--dour-d);border-radius:12px;padding:10px 16px;font-weight:700;min-height:44px}
 #install-banner .x{background:none;color:var(--bg);font-size:1.2rem;padding:10px}
 .a2bg{position:fixed;inset:0;background:rgba(20,20,15,.5);z-index:60}
-.a2{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--bg);color:var(--ink);border-radius:28px 28px 0 0;max-width:640px;margin:0 auto;border:2px solid var(--bd);border-bottom:0;box-shadow:0 -12px 40px rgba(0,0,0,.28);
+.a2s{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--bg);color:var(--ink);border-radius:28px 28px 0 0;max-width:640px;margin:0 auto;border:2px solid var(--bd);border-bottom:0;box-shadow:0 -12px 40px rgba(0,0,0,.28);
   padding:22px max(20px,env(safe-area-inset-left,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-right,0px));max-height:92%;overflow:auto}
-.a2 img{display:block;width:72px;height:72px;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-.a2 h2{font-size:1.65rem;line-height:1.15;margin:14px 0 8px}
+.a2s img{display:block;width:72px;height:72px;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.a2s h2{font-size:1.65rem;line-height:1.15;margin:14px 0 8px}
 .a2p{font-size:1.15rem;color:var(--ink2);margin:0 0 18px}
 .a2b{display:block;width:100%;min-height:62px;border-radius:18px;font-size:1.2rem;font-weight:700;text-align:center;margin-top:10px;padding:14px}
 .a2b.p{background:var(--ink);color:var(--bg)} .a2b.s{border:2px solid var(--bd);background:var(--card)}
@@ -2250,7 +2250,7 @@ function a2Open(mode){
   A2.mode=mode||'ask'; A2.open=true;
   let box=document.getElementById('a2box');
   if(!box){box=document.createElement('div');box.id='a2box';document.body.appendChild(box);}
-  box.innerHTML=`<div class="a2bg" data-a2="no"></div><div class="a2" role="dialog" aria-modal="true" aria-label="Colocar o app na tela inicial">${a2Html()}</div>`;
+  box.innerHTML=`<div class="a2bg" data-a2="no"></div><div class="a2s" role="dialog" aria-modal="true" aria-label="Colocar o app na tela inicial">${a2Html()}</div>`;
 }
 function a2Close(snooze){
   A2.open=false;const box=document.getElementById('a2box');if(box)box.remove();
